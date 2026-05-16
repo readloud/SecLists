@@ -25729,6 +25729,9 @@ Umbraco.Web.UI.Client/.env
 src/Umbraco.Web.UI.Client/eslint.config.js
 Umbraco.Web.UI.Client/eslint.config.js
 eslint.config.js
+src/Umbraco.Web.UI.Client/tsconfig.typedoc.json
+Umbraco.Web.UI.Client/tsconfig.typedoc.json
+tsconfig.typedoc.json
 src/Umbraco.Web.UI.Client/utils/json-schema/test-umbraco-package.json
 Umbraco.Web.UI.Client/utils/json-schema/test-umbraco-package.json
 utils/json-schema/test-umbraco-package.json
@@ -104084,6 +104087,11 @@ Umbraco.Core/Cache/NotificationHandlers/DeletedDistributedCacheNotificationHandl
 Cache/NotificationHandlers/DeletedDistributedCacheNotificationHandlerBase.cs
 NotificationHandlers/DeletedDistributedCacheNotificationHandlerBase.cs
 DeletedDistributedCacheNotificationHandlerBase.cs
+src/Umbraco.Core/Cache/NotificationHandlers/IDistributedCacheAsyncNotificationHandler.cs
+Umbraco.Core/Cache/NotificationHandlers/IDistributedCacheAsyncNotificationHandler.cs
+Cache/NotificationHandlers/IDistributedCacheAsyncNotificationHandler.cs
+NotificationHandlers/IDistributedCacheAsyncNotificationHandler.cs
+IDistributedCacheAsyncNotificationHandler.cs
 src/Umbraco.Core/Cache/NotificationHandlers/SavedDistributedCacheNotificationHandlerBase.cs
 Umbraco.Core/Cache/NotificationHandlers/SavedDistributedCacheNotificationHandlerBase.cs
 Cache/NotificationHandlers/SavedDistributedCacheNotificationHandlerBase.cs
