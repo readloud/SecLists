@@ -54732,6 +54732,16 @@ templates/shared/components/view_in_store.html.twig
 shared/components/view_in_store.html.twig
 components/view_in_store.html.twig
 view_in_store.html.twig
+src/Sylius/Bundle/AdminBundle/templates/shared/components/navbar/notifications/item.html.twig
+Sylius/Bundle/AdminBundle/templates/shared/components/navbar/notifications/item.html.twig
+Bundle/AdminBundle/templates/shared/components/navbar/notifications/item.html.twig
+AdminBundle/templates/shared/components/navbar/notifications/item.html.twig
+templates/shared/components/navbar/notifications/item.html.twig
+shared/components/navbar/notifications/item.html.twig
+components/navbar/notifications/item.html.twig
+navbar/notifications/item.html.twig
+notifications/item.html.twig
+item.html.twig
 src/Sylius/Bundle/AdminBundle/templates/shared/components/navbar/notifications.html.twig
 Sylius/Bundle/AdminBundle/templates/shared/components/navbar/notifications.html.twig
 Bundle/AdminBundle/templates/shared/components/navbar/notifications.html.twig

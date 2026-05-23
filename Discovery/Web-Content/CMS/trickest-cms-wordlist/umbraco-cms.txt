@@ -2795,7 +2795,10 @@ src/Umbraco.Infrastructure/Security/SignOutSuccessResult.cs
 src/Umbraco.Infrastructure/Security/MemberIdentityUser.cs
 src/Umbraco.Infrastructure/Security/MemberPasswordHasher.cs
 src/Umbraco.Infrastructure/Security/BackOfficeUserStore.cs
+src/Umbraco.Infrastructure/BackgroundJobs/RecurringBackgroundJobBase.cs
 src/Umbraco.Infrastructure/BackgroundJobs/DistributedBackgroundJobHostedService.cs
+src/Umbraco.Infrastructure/BackgroundJobs/IRecurringBackgroundJobTrigger.cs
+src/Umbraco.Infrastructure/BackgroundJobs/RecurringBackgroundJobTrigger.cs
 src/Umbraco.Infrastructure/BackgroundJobs/IDistributedBackgroundJob.cs
 src/Umbraco.Infrastructure/BackgroundJobs/IRecurringBackgroundJob.cs
 src/Umbraco.Infrastructure/BackgroundJobs/DelayCalculator.cs
@@ -2813,6 +2816,7 @@ src/Umbraco.Infrastructure/BackgroundJobs/Jobs/ServerRegistration/InstructionPro
 src/Umbraco.Infrastructure/BackgroundJobs/Jobs/ServerRegistration/TouchServerJob.cs
 src/Umbraco.Infrastructure/BackgroundJobs/Jobs/ReportSiteJob.cs
 src/Umbraco.Infrastructure/BackgroundJobs/Jobs/TempFileCleanupJob.cs
+src/Umbraco.Infrastructure/BackgroundJobs/ITriggerableRecurringBackgroundJob.cs
 src/Umbraco.Infrastructure/BackgroundJobs/RecurringBackgroundJobHostedServiceRunner.cs
 src/Umbraco.Infrastructure/BackgroundJobs/RecurringBackgroundJobHostedService.cs
 src/Umbraco.Infrastructure/Scoping/AmbientScopeStack.cs
@@ -2875,6 +2879,7 @@ src/Umbraco.Infrastructure/Notifications/RecurringBackgroundJobFailedNotificatio
 src/Umbraco.Infrastructure/Notifications/RecurringBackgroundJobStartedNotification.cs
 src/Umbraco.Infrastructure/Notifications/RecurringBackgroundJobExecutingNotification.cs
 src/Umbraco.Infrastructure/Notifications/RecurringBackgroundJobIgnoredNotification.cs
+src/Umbraco.Infrastructure/Notifications/RecurringBackgroundJobCanceledNotification.cs
 src/Umbraco.Infrastructure/Notifications/RecurringBackgroundJobStoppingNotification.cs
 src/Umbraco.Infrastructure/Notifications/RecurringBackgroundJobStartingNotification.cs
 src/Umbraco.Infrastructure/Notifications/RecurringBackgroundJobStoppedNotification.cs
@@ -3042,6 +3047,7 @@ src/Umbraco.Infrastructure/Media/SvgDimensionExtractor.cs
 src/Umbraco.Infrastructure/HostedServices/RecurringHostedServiceBase.cs
 src/Umbraco.Infrastructure/HostedServices/QueuedHostedService.cs
 src/Umbraco.Infrastructure/HostedServices/BackgroundTaskQueue.cs
+src/Umbraco.Infrastructure/HostedServices/NextExecutionStrategy.cs
 src/Umbraco.Cms.Persistence.EFCore.Sqlite/SqliteMigrationProvider.cs
 src/Umbraco.Cms.Persistence.EFCore.Sqlite/Migrations/20230807123456_AddOpenIddict.cs
 src/Umbraco.Cms.Persistence.EFCore.Sqlite/Migrations/20251006140958_UpdateOpenIddictToV7.Designer.cs
@@ -4369,6 +4375,7 @@ src/Umbraco.Core/DependencyInjection/UmbracoBuilderExtensions.cs
 src/Umbraco.Core/DependencyInjection/UmbracoBuilder.Composers.cs
 src/Umbraco.Core/DependencyInjection/UmbracoBuilder.cs
 src/Umbraco.Core/DependencyInjection/StaticServiceProvider.cs
+src/Umbraco.Core/DependencyInjection/IUmbracoManagedOutputCacheMarker.cs
 src/Umbraco.Core/DependencyInjection/UmbracoBuilder.Collections.cs
 src/Umbraco.Core/DependencyInjection/ServiceProviderExtensions.cs
 src/Umbraco.Core/DependencyInjection/UmbracoBuilder.Events.cs
@@ -5635,6 +5642,7 @@ src/Umbraco.Core/Services/Changes/TreeChangeTypes.cs
 src/Umbraco.Core/Services/Changes/ContentTypeChange.cs
 src/Umbraco.Core/Services/IAuditEntryService.cs
 src/Umbraco.Core/Services/IDataTypeService.cs
+src/Umbraco.Core/Services/DocumentUrlServiceContentTreeChangeNotificationHandler.cs
 src/Umbraco.Core/Services/IPublicAccessService.cs
 src/Umbraco.Core/Services/ILogViewerRepository.cs
 src/Umbraco.Core/Services/UserServiceExtensions.cs
@@ -8157,6 +8165,7 @@ src/Umbraco.Web.UI.Client/src/packages/property-editors/entity-data-picker/prope
 src/Umbraco.Web.UI.Client/src/packages/property-editors/entity-data-picker/input/input-entity-data.context.ts
 src/Umbraco.Web.UI.Client/src/packages/property-editors/entity-data-picker/input/input-entity-data.element.ts
 src/Umbraco.Web.UI.Client/src/packages/property-editors/entity-data-picker/input/entity-data-picker-data-source.context.token.ts
+src/Umbraco.Web.UI.Client/src/packages/property-editors/entity-data-picker/input/input-entity-data.context.test.ts
 src/Umbraco.Web.UI.Client/src/packages/property-editors/entity-data-picker/input/entity-data-picker-data-source.context.ts
 src/Umbraco.Web.UI.Client/src/packages/property-editors/entity-data-picker/picker-collection/manifests.ts
 src/Umbraco.Web.UI.Client/src/packages/property-editors/entity-data-picker/picker-collection/entity-data-picker-collection.repository.ts
@@ -11168,13 +11177,16 @@ src/Umbraco.Web.UI.Client/src/packages/core/workspace/workspace.context-token.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/index.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/submittable-tree-entity-workspace-context.interface.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/index.ts
+src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/notify-workspace-action-starting.function.test.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/saveable-workspace-context.interface.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/submittable-workspace-context.interface.ts
+src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/workspace-action-execution-options.interface.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/saveable-workspace.context-token.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/submittable-workspace.context-token.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/publishable-workspace-context.interface.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/publishable-workspace.context-token.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/routable-workspace.context-token.ts
+src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/notify-workspace-action-starting.function.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/submittable-tree-entity-workspace.context-token.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/entity-workspace.context-token.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/contexts/tokens/invariant-dataset-workspace-context.interface.ts
@@ -11228,6 +11240,7 @@ src/Umbraco.Web.UI.Client/src/packages/core/workspace/components/workspace-actio
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/components/workspace-action/common/save/index.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/components/workspace-action/common/save/save.action.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/components/workspace-action/common/save/types.ts
+src/Umbraco.Web.UI.Client/src/packages/core/workspace/components/workspace-action/workspace-action-base.controller.test.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/components/workspace-action/workspace-action-base.controller.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/components/workspace-action/types.ts
 src/Umbraco.Web.UI.Client/src/packages/core/workspace/components/workspace-action/default/index.ts
@@ -13968,6 +13981,10 @@ src/Umbraco.Web.UI.Client/src/packages/core/components/input-date/input-date.ele
 src/Umbraco.Web.UI.Client/src/packages/core/components/input-date/index.ts
 src/Umbraco.Web.UI.Client/src/packages/core/components/input-date/input-date.stories.ts
 src/Umbraco.Web.UI.Client/src/packages/core/components/input-date/input-date.test.ts
+src/Umbraco.Web.UI.Client/src/packages/core/components/entity-frame/index.ts
+src/Umbraco.Web.UI.Client/src/packages/core/components/entity-frame/entity-frame.stories.ts
+src/Umbraco.Web.UI.Client/src/packages/core/components/entity-frame/entity-frame.test.ts
+src/Umbraco.Web.UI.Client/src/packages/core/components/entity-frame/entity-frame.element.ts
 src/Umbraco.Web.UI.Client/src/packages/core/components/input-dropdown/index.ts
 src/Umbraco.Web.UI.Client/src/packages/core/components/input-dropdown/input-dropdown-list.element.ts
 src/Umbraco.Web.UI.Client/src/packages/core/components/input-dropdown/input-dropdown-list.stories.ts
@@ -15423,7 +15440,10 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Web.Website/Routing/ControllerActionSearch
 tests/Umbraco.Tests.UnitTests/Umbraco.Web.Website/Cache/PartialViewCacheInvalidators/MemberPartialViewCacheInvalidatorTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Web.Website/ApplicationUrlConfigurationNotificationHandlerTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Templates/DockerFileTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.PublishedCache.HybridCache/PublishedContentTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.PublishedCache.HybridCache/DocumentCacheSyncFastPathTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.PublishedCache.HybridCache/ElementBreadthFirstKeyProviderTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.PublishedCache.HybridCache/ElementCacheSyncFastPathTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.PublishedCache.HybridCache/DeferredCacheRebuildServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.PublishedCache.HybridCache/DocumentBreadthFirstKeyProviderTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.PublishedCache.HybridCache/CacheRefreshingNotificationHandlerTests.cs
@@ -15519,6 +15539,7 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Security/MemberPasswordHash
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Security/BackOfficeUserReaderTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Security/MemberIdentityUserTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackgroundJobs/RecurringBackgroundJobHostedServiceTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackgroundJobs/DelayCalculatorTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackgroundJobs/Jobs/HealthCheckNotifierJobTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackgroundJobs/Jobs/TempFileCleanupJobTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackgroundJobs/Jobs/ScheduledPublishingJobTests.cs
@@ -15526,6 +15547,7 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackgroundJobs/Jobs/LogScru
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackgroundJobs/Jobs/ServerRegistration/TouchServerJobTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackgroundJobs/Jobs/ServerRegistration/InstructionProcessJobTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackgroundJobs/Jobs/CacheInstructionsPruningJobTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/BackgroundJobs/RecurringBackgroundJobHostedServiceRunnerTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Scoping/ScopeUnitTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Serialization/JsonUdiConverterTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Infrastructure/Serialization/SystemTextJsonSerializerTests.cs
@@ -15630,6 +15652,7 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/DeepCloneHelperTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/CultureImpactTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/DictionaryTranslationTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/UserExtensionsTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/Navigation/NavigationNodeTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/MemberTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/Mapping/CommonMapperTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Models/DataTypeTests.cs
@@ -15745,6 +15768,8 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/ContentTypeServiceExtensions
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/DefaultContentVersionCleanupPolicyTest.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/AuditServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/DocumentUrlAliasServiceTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/Navigation/ContentNavigationOrderedChildrenCacheTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/Navigation/ContentNavigationDescendantsCacheTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/ContentNavigationServiceBaseTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/EntityServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/UserGroupServiceTests.cs
@@ -15755,10 +15780,12 @@ tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/TreeEntitySortingServiceTest
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/ElementPermissionServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/LongRunningOperationServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/PublishStatus/PublishedContentStatusFilteringServiceTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/PublishStatus/PublishedMediaStatusFilteringServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/SystemInformationServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/AuditEntryServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/DocumentUrlServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/PreviewServiceTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/DocumentUrlServiceContentTreeChangeNotificationHandlerTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/ContentValidationServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/ElementContainerPermissionServiceTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Core/Services/IsoCodeValidatorTests.cs
@@ -16579,6 +16606,7 @@ tests/Umbraco.Tests.Integration/Umbraco.Core/Services/MemberGroupServiceTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/DocumentNavigationServiceTests.Restore.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/MemberTypeEditingServiceTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/PublishedUrlInfoProviderTests.cs
+tests/Umbraco.Tests.Integration/Umbraco.Core/Services/DocumentUrlServiceContentTreeChangeTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/DocumentNavigationServiceTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/WebhookServiceTests.cs
 tests/Umbraco.Tests.Integration/Umbraco.Core/Services/MediaNavigationServiceTests.Restore.cs
@@ -16665,8 +16693,10 @@ tests/Umbraco.Tests.Benchmarks/CtorInvokeBenchmarks.cs.bak
 tests/Umbraco.Tests.Benchmarks/ConcurrentDictionaryBenchmarks.cs
 tests/Umbraco.Tests.Benchmarks/DetectJsonBenchmarks.cs
 tests/Umbraco.Tests.Benchmarks/StringExtensionsBenchmarks.cs
+tests/Umbraco.Tests.Benchmarks/HybridCacheNavigationBenchmarks.cs
 tests/Umbraco.Tests.Benchmarks/HexStringBenchmarks.cs
 tests/Umbraco.Tests.Benchmarks/StringFileExtensionBenchmark.cs
+tests/Umbraco.Tests.Benchmarks/Fixtures/SyntheticPublishedTreeFixture.cs
 tests/Umbraco.Tests.Benchmarks/LinqCastBenchmarks.cs
 tests/Umbraco.Tests.Benchmarks/ContentTypeCachePolicyBenchmarks.cs
 tests/Umbraco.Tests.Benchmarks/GuidUdiBenchmarks.cs
@@ -17289,6 +17319,7 @@ templates/UmbracoExtension/Client/src/bundle.manifests.ts
 templates/UmbracoExtension/Client/vite.config.ts
 templates/UmbracoExtension/Client/public/umbraco-package.json
 templates/UmbracoExtension/Umbraco.Extension.csproj
+templates/UmbracoExtension/ViewModels/WhoAmIResponseModel.cs
 templates/UmbracoExtension/Directory.Packages.props
 templates/UmbracoExtension/Constants.cs
 templates/UmbracoExtension/.template.config/readme.md
