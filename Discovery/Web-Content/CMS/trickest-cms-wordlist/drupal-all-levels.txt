@@ -31201,6 +31201,11 @@ modules/locale/src/LocaleEvents.php
 locale/src/LocaleEvents.php
 src/LocaleEvents.php
 LocaleEvents.php
+core/modules/locale/src/CurrentImportStorage.php
+modules/locale/src/CurrentImportStorage.php
+locale/src/CurrentImportStorage.php
+src/CurrentImportStorage.php
+CurrentImportStorage.php
 core/modules/locale/src/StringStorageException.php
 modules/locale/src/StringStorageException.php
 locale/src/StringStorageException.php
@@ -31333,6 +31338,11 @@ modules/locale/src/LocaleConfigSubscriber.php
 locale/src/LocaleConfigSubscriber.php
 src/LocaleConfigSubscriber.php
 LocaleConfigSubscriber.php
+core/modules/locale/src/CurrentImport.php
+modules/locale/src/CurrentImport.php
+locale/src/CurrentImport.php
+src/CurrentImport.php
+CurrentImport.php
 core/modules/locale/src/LocaleServiceProvider.php
 modules/locale/src/LocaleServiceProvider.php
 locale/src/LocaleServiceProvider.php
@@ -31354,6 +31364,12 @@ locale/src/Hook/LocaleThemeHooks.php
 src/Hook/LocaleThemeHooks.php
 Hook/LocaleThemeHooks.php
 LocaleThemeHooks.php
+core/modules/locale/src/Hook/LocaleCronHooks.php
+modules/locale/src/Hook/LocaleCronHooks.php
+locale/src/Hook/LocaleCronHooks.php
+src/Hook/LocaleCronHooks.php
+Hook/LocaleCronHooks.php
+LocaleCronHooks.php
 core/modules/locale/src/Hook/LocaleRequirements.php
 modules/locale/src/Hook/LocaleRequirements.php
 locale/src/Hook/LocaleRequirements.php
