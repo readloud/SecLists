@@ -102754,6 +102754,11 @@ Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Factories/DocumentCollectionP
 Umbraco.Cms.Api.Management/Factories/DocumentCollectionPresentationFactoryTests.cs
 Factories/DocumentCollectionPresentationFactoryTests.cs
 DocumentCollectionPresentationFactoryTests.cs
+tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Factories/DocumentNotificationPresentationFactoryTests.cs
+Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Factories/DocumentNotificationPresentationFactoryTests.cs
+Umbraco.Cms.Api.Management/Factories/DocumentNotificationPresentationFactoryTests.cs
+Factories/DocumentNotificationPresentationFactoryTests.cs
+DocumentNotificationPresentationFactoryTests.cs
 tests/Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Factories/DataTypePresentationFactoryTests.cs
 Umbraco.Tests.UnitTests/Umbraco.Cms.Api.Management/Factories/DataTypePresentationFactoryTests.cs
 Umbraco.Cms.Api.Management/Factories/DataTypePresentationFactoryTests.cs

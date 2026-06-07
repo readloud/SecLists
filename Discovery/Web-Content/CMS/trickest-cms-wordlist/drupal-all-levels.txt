@@ -31330,6 +31330,11 @@ modules/locale/src/LocaleServiceProvider.php
 locale/src/LocaleServiceProvider.php
 src/LocaleServiceProvider.php
 LocaleServiceProvider.php
+core/modules/locale/src/LocaleTranslationSource.php
+modules/locale/src/LocaleTranslationSource.php
+locale/src/LocaleTranslationSource.php
+src/LocaleTranslationSource.php
+LocaleTranslationSource.php
 core/modules/locale/src/LocaleProjectStorage.php
 modules/locale/src/LocaleProjectStorage.php
 locale/src/LocaleProjectStorage.php

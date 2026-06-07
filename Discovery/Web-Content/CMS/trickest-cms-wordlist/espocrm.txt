@@ -6902,6 +6902,7 @@ application/Espo/Tools/EmailNotification/HookProcessor.php
 application/Espo/Tools/EmailNotification/Jobs/NotifyAboutAssignment.php
 application/Espo/Tools/EmailNotification/AssignmentProcessor.php
 application/Espo/Tools/EmailNotification/AssignmentProcessorData.php
+application/Espo/Tools/Object/MetadataProvider.php
 application/Espo/Tools/Lock/LockService.php
 application/Espo/Tools/Lock/LockMetadataProvider.php
 application/Espo/Tools/Lock/LockValidationHelper.php
@@ -7701,6 +7702,7 @@ tests/integration/Espo/Tools/DynamicLogic/CascadingFieldsTest.php
 tests/integration/Espo/Tools/Activities/ComposeEmailAddressListTest.php
 tests/integration/Espo/Tools/Merge/MergeTest.php
 tests/integration/Espo/Tools/AppSecret/SecretProviderTest.php
+tests/integration/Espo/Tools/Object/MetadataProviderTest.php
 tests/integration/Espo/Tools/Lock/LockTest.php
 tests/integration/Espo/Tools/App/LanguageTest.php
 tests/integration/Espo/Tools/App/MetadataTest.php
