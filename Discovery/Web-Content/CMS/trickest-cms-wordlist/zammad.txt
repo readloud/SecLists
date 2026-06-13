@@ -6078,9 +6078,7 @@ app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/ArticleMeta/t
 app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/ArticleMeta/__tests__/useArticleMeta.spec.ts
 app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/ArticleMeta/__tests__/ArticleMeta.spec.ts
 app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/TimeAccountingFlyout.vue
-app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/ArticleReplyPinned.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/ArticleReply.vue
-app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/ArticleReplyUnpinned.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/DeliveryMessage.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/SystemMessage.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/TicketDetailTopBar/TicketDetailTopBar.vue
@@ -6105,6 +6103,7 @@ app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/TicketSimpleT
 app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/TicketSimpleTable/__tests__/TicketSimpleTable.spec.ts
 app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/ArticleReactionBadge.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/ArticleMore.vue
+app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/ArticleReplyPanel.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/TicketScreenBehavior/behaviorOptions.ts
 app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/TicketScreenBehavior/TicketScreenBehavior.vue
 app/frontend/apps/desktop/pages/ticket/components/TicketDetailView/TicketScreenBehavior/useTicketScreenBehavior.ts
@@ -6376,6 +6375,7 @@ app/frontend/apps/desktop/initializer/assets/arrow-bar-right.svg
 app/frontend/apps/desktop/initializer/assets/ai-knowledge-base.svg
 app/frontend/apps/desktop/initializer/assets/play-circle.svg
 app/frontend/apps/desktop/initializer/assets/check-circle-outline.svg
+app/frontend/apps/desktop/initializer/assets/lock-fill.svg
 app/frontend/apps/desktop/initializer/assets/files.svg
 app/frontend/apps/desktop/initializer/assets/check-circle-no-ai.svg
 app/frontend/apps/desktop/initializer/assets/image.svg
@@ -6527,6 +6527,7 @@ app/frontend/apps/desktop/initializer/assets/phone-pencil.svg
 app/frontend/apps/desktop/initializer/assets/chat-left-text.svg
 app/frontend/apps/desktop/initializer/assets/calendar-range.svg
 app/frontend/apps/desktop/initializer/assets/ai-agent.svg
+app/frontend/apps/desktop/initializer/assets/plus.svg
 app/frontend/apps/desktop/initializer/assets/phone.svg
 app/frontend/apps/desktop/initializer/assets/delete-column.svg
 app/frontend/apps/desktop/initializer/assets/gear.svg
@@ -6689,12 +6690,15 @@ app/frontend/apps/desktop/components/layout/LayoutBottomBar.vue
 app/frontend/apps/desktop/components/layout/LayoutPublicPage/LayoutPublicPage.vue
 app/frontend/apps/desktop/components/layout/LayoutPublicPage/LayoutPublicPageBoxActions.vue
 app/frontend/apps/desktop/components/layout/LayoutContent.vue
+app/frontend/apps/desktop/components/layout/stores/sidebarDisplay.ts
+app/frontend/apps/desktop/components/layout/stores/__tests__/sidebarDisplay.spec.ts
 app/frontend/apps/desktop/components/layout/LayoutMain.vue
 app/frontend/apps/desktop/components/layout/LayoutSidebar.vue
 app/frontend/apps/desktop/components/layout/types.ts
 app/frontend/apps/desktop/components/layout/__tests__/LayoutContent.spec.ts
 app/frontend/apps/desktop/components/layout/__tests__/LayoutPage.spec.ts
 app/frontend/apps/desktop/components/layout/__tests__/LayoutPublicPage.spec.ts
+app/frontend/apps/desktop/components/layout/__tests__/useSidebarDisplay.spec.ts
 app/frontend/apps/desktop/components/layout/__tests__/LayoutSidebar.spec.ts
 app/frontend/apps/desktop/components/layout/LayoutTaskbarTabContent.vue
 app/frontend/apps/desktop/components/Search/graphql/queries/searchCounts.mocks.ts
@@ -7085,11 +7089,8 @@ app/frontend/apps/desktop/components/Form/fields/FieldToggleButtons/__tests__/Fi
 app/frontend/apps/desktop/components/Form/fields/FieldRecipient/index.ts
 app/frontend/apps/desktop/components/Form/fields/FieldRecipient/FieldRecipientWrapper.vue
 app/frontend/apps/desktop/components/Form/fields/FieldRecipient/__tests__/FieldRecipient.spec.ts
-app/frontend/apps/desktop/components/CollapseButton/useCollapseHandler.ts
 app/frontend/apps/desktop/components/CollapseButton/CollapseButton.vue
-app/frontend/apps/desktop/components/CollapseButton/types.ts
 app/frontend/apps/desktop/components/CollapseButton/__tests__/CollapseButton.spec.ts
-app/frontend/apps/desktop/components/CollapseButton/__tests__/useCollapseHandler.spec.ts
 app/frontend/apps/desktop/components/CommonConfirmationDialog/CommonConfirmationDialog.vue
 app/frontend/apps/desktop/components/CommonConfirmationDialog/initializeConfirmationDialog.ts
 app/frontend/apps/desktop/components/CommonConfirmationDialog/types.ts
@@ -8778,6 +8779,7 @@ app/frontend/shared/components/Form/__tests__/apps/desktop/form-updater.desktop.
 app/frontend/shared/components/Form/__tests__/apps/mobile/form-updater.mobile.spec.ts
 app/frontend/shared/components/Form/__tests__/mocks/additionalFrontendObjectAttributes.json
 app/frontend/shared/components/Form/__tests__/Form.spec.ts
+app/frontend/shared/components/Form/__tests__/utils.spec.ts
 app/frontend/shared/components/Form/__tests__/useForm.spec.ts
 app/frontend/shared/components/Form/types/field.ts
 app/frontend/shared/components/Form/useForm.ts
