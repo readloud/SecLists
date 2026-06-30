@@ -4930,6 +4930,8 @@ core/.deprecation-ignore.txt
 .deprecation-ignore.txt
 core/COPYRIGHT.txt
 COPYRIGHT.txt
+core/CLAUDE.md
+CLAUDE.md
 core/phpstan-partial.neon
 phpstan-partial.neon
 core/phpstan.neon.dist
@@ -22310,6 +22312,8 @@ core/INSTALL.mysql.txt
 INSTALL.mysql.txt
 core/phpcs.xml.dist
 phpcs.xml.dist
+core/AGENTS.md
+AGENTS.md
 core/.phpstan-baseline.php
 .phpstan-baseline.php
 core/misc/logo/LICENSE.txt
