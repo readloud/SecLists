@@ -39986,6 +39986,11 @@ Feature/AssetModels/Ui/UpdateAssetModelsTest.php
 AssetModels/Ui/UpdateAssetModelsTest.php
 Ui/UpdateAssetModelsTest.php
 UpdateAssetModelsTest.php
+tests/Feature/AssetModels/Ui/CloneAssetModelTest.php
+Feature/AssetModels/Ui/CloneAssetModelTest.php
+AssetModels/Ui/CloneAssetModelTest.php
+Ui/CloneAssetModelTest.php
+CloneAssetModelTest.php
 tests/Feature/AssetModels/Ui/CreateAssetModelsTest.php
 Feature/AssetModels/Ui/CreateAssetModelsTest.php
 AssetModels/Ui/CreateAssetModelsTest.php
@@ -40173,6 +40178,10 @@ tests/Feature/Users/UserPermissionLoggingTest.php
 Feature/Users/UserPermissionLoggingTest.php
 Users/UserPermissionLoggingTest.php
 UserPermissionLoggingTest.php
+tests/Feature/Users/LegacyCompanyIdMirrorTest.php
+Feature/Users/LegacyCompanyIdMirrorTest.php
+Users/LegacyCompanyIdMirrorTest.php
+LegacyCompanyIdMirrorTest.php
 tests/Feature/Users/UserCompanyLoggingTest.php
 Feature/Users/UserCompanyLoggingTest.php
 Users/UserCompanyLoggingTest.php
@@ -42075,6 +42084,9 @@ migrations/2023_04_12_135822_add_supplier_to_components.php
 database/migrations/2016_09_04_182149_migrate_asset_log_to_action_log.php
 migrations/2016_09_04_182149_migrate_asset_log_to_action_log.php
 2016_09_04_182149_migrate_asset_log_to_action_log.php
+database/migrations/2026_07_10_000001_rename_users_company_id_to_legacy_company_id.php
+migrations/2026_07_10_000001_rename_users_company_id_to_legacy_company_id.php
+2026_07_10_000001_rename_users_company_id_to_legacy_company_id.php
 database/migrations/2017_03_03_154632_add_time_date_display_to_settings.php
 migrations/2017_03_03_154632_add_time_date_display_to_settings.php
 2017_03_03_154632_add_time_date_display_to_settings.php

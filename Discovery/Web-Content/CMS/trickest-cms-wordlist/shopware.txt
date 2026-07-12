@@ -2388,6 +2388,7 @@ src/Core/Framework/Event/MailAware.php
 src/Core/Framework/Event/OrderAware.php
 src/Core/Framework/Event/BeforeSendResponseEvent.php
 src/Core/Framework/Event/EventData/EventDataCollection.php
+src/Core/Framework/Event/EventData/FormDataObjectType.php
 src/Core/Framework/Event/EventData/EntityType.php
 src/Core/Framework/Event/EventData/MailRecipientStruct.php
 src/Core/Framework/Event/EventData/ArrayType.php
@@ -3207,6 +3208,7 @@ src/Core/Framework/DataAbstractionLayer/Exception/InvalidLimitQueryException.php
 src/Core/Framework/DataAbstractionLayer/Exception/DefinitionNotFoundException.php
 src/Core/Framework/DataAbstractionLayer/Exception/InvalidSortQueryException.php
 src/Core/Framework/DataAbstractionLayer/Exception/UnableToLoadPathException.php
+src/Core/Framework/DataAbstractionLayer/Exception/UnmappedFieldException.php
 src/Core/Framework/DataAbstractionLayer/Exception/InvalidEntityUuidException.php
 src/Core/Framework/DataAbstractionLayer/Exception/EntityNotFoundException.php
 src/Core/Framework/DataAbstractionLayer/Exception/ApiProtectionException.php
@@ -4435,6 +4437,7 @@ src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/media.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/order_transaction.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/state_machine.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/message-queue.json
+src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/customer_convert.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/customer_impersonation.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/queue.json
 src/Core/Framework/Api/ApiDefinition/Generator/Schema/AdminApi/paths/config.json
@@ -5070,6 +5073,7 @@ src/Core/Content/MailTemplate/Service/MailDataSimulator.php
 src/Core/Content/MailTemplate/Service/Event/MailTemplateRenderContextEvent.php
 src/Core/Content/MailTemplate/Service/Event/MailErrorEvent.php
 src/Core/Content/MailTemplate/Service/Event/MailBeforeValidateEvent.php
+src/Core/Content/MailTemplate/Service/Event/MailDataSimulatorFormDataEvent.php
 src/Core/Content/MailTemplate/Service/Event/MailSentEvent.php
 src/Core/Content/MailTemplate/Service/Event/MailDataSimulatorFieldEvent.php
 src/Core/Content/MailTemplate/Service/Event/MailBeforeSentEvent.php
@@ -6245,6 +6249,7 @@ src/Core/Checkout/Customer/Password/LegacyEncoder/LegacyEncoderInterface.php
 src/Core/Checkout/Customer/Password/LegacyEncoder/Sha256.php
 src/Core/Checkout/Customer/Password/LegacyEncoder/Md5.php
 src/Core/Checkout/Customer/Api/CustomerGroupRegistrationActionController.php
+src/Core/Checkout/Customer/Api/ConvertGuestController.php
 src/Core/Checkout/Customer/Subscriber/CustomerTokenSubscriber.php
 src/Core/Checkout/Customer/Subscriber/CustomerEmailUniqueSubscriber.php
 src/Core/Checkout/Customer/Subscriber/CustomerMetaFieldSubscriber.php
@@ -7020,9 +7025,9 @@ src/Administration/Framework/Adapter/Cache/Http/AdministrationCacheControlListen
 src/Administration/Framework/App/ActiveAdminAppLoader.php
 src/Administration/Framework/App/Subscriber/SystemLanguageChangedSubscriber.php
 src/Administration/Framework/Api/Subscriber/AdminInfoConfigBundlesSubscriber.php
-src/Administration/DependencyInjection/framework.xml
+src/Administration/DependencyInjection/services.php
 src/Administration/DependencyInjection/AdministrationMigrationCompilerPass.php
-src/Administration/DependencyInjection/services.xml
+src/Administration/DependencyInjection/framework.php
 src/Administration/Command/DeleteExtensionLocalPublicFilesCommand.php
 src/Administration/Command/DeleteAdminFilesAfterBuildCommand.php
 src/Administration/Resources/ide-twig.json
@@ -7646,6 +7651,9 @@ src/Administration/Resources/app/administration/src/module/sw-settings/page/sw-s
 src/Administration/Resources/app/administration/src/module/sw-settings/page/sw-settings-index/sw-settings-index.html.twig
 src/Administration/Resources/app/administration/src/module/sw-settings/page/sw-settings-index/sw-settings-index.scss
 src/Administration/Resources/app/administration/src/module/sw-settings/page/sw-settings-index/sw-settings-index.spec.js
+src/Administration/Resources/app/administration/src/module/sw-settings/component/sw-system-config-media-upload/sw-system-config-media-upload.spec.js
+src/Administration/Resources/app/administration/src/module/sw-settings/component/sw-system-config-media-upload/index.js
+src/Administration/Resources/app/administration/src/module/sw-settings/component/sw-system-config-media-upload/sw-system-config-media-upload.html.twig
 src/Administration/Resources/app/administration/src/module/sw-settings/component/sw-system-config/sw-system-config.scss
 src/Administration/Resources/app/administration/src/module/sw-settings/component/sw-system-config/sw-system-config.spec.js
 src/Administration/Resources/app/administration/src/module/sw-settings/component/sw-system-config/sw-system-config.html.twig
@@ -7799,6 +7807,7 @@ src/Administration/Resources/app/administration/src/module/sw-newsletter-recipie
 src/Administration/Resources/app/administration/src/module/sw-settings-basic-information/service/captcha.service.spec.js
 src/Administration/Resources/app/administration/src/module/sw-settings-basic-information/service/captcha.service.js
 src/Administration/Resources/app/administration/src/module/sw-settings-basic-information/page/sw-settings-basic-information/sw-settings-basic-information.html.twig
+src/Administration/Resources/app/administration/src/module/sw-settings-basic-information/page/sw-settings-basic-information/sw-settings-basic-information.scss
 src/Administration/Resources/app/administration/src/module/sw-settings-basic-information/page/sw-settings-basic-information/index.js
 src/Administration/Resources/app/administration/src/module/sw-settings-basic-information/component/sw-settings-captcha-select-v2/index.js
 src/Administration/Resources/app/administration/src/module/sw-settings-basic-information/component/sw-settings-captcha-select-v2/sw-settings-captcha-select-v2.html.twig
@@ -9194,6 +9203,10 @@ src/Administration/Resources/app/administration/src/module/sw-customer/component
 src/Administration/Resources/app/administration/src/module/sw-customer/component/sw-customer-base-form/sw-customer-base-form.html.twig
 src/Administration/Resources/app/administration/src/module/sw-customer/component/sw-customer-base-form/sw-customer-base-form.spec.js
 src/Administration/Resources/app/administration/src/module/sw-customer/component/sw-customer-base-form/index.js
+src/Administration/Resources/app/administration/src/module/sw-customer/component/sw-customer-convert-guest-modal/sw-customer-convert-guest-modal.scss
+src/Administration/Resources/app/administration/src/module/sw-customer/component/sw-customer-convert-guest-modal/sw-customer-convert-guest-modal.spec.js
+src/Administration/Resources/app/administration/src/module/sw-customer/component/sw-customer-convert-guest-modal/index.js
+src/Administration/Resources/app/administration/src/module/sw-customer/component/sw-customer-convert-guest-modal/sw-customer-convert-guest-modal.html.twig
 src/Administration/Resources/app/administration/src/module/sw-customer/acl/index.js
 src/Administration/Resources/app/administration/src/module/sw-customer/snippet/en.json
 src/Administration/Resources/app/administration/src/module/sw-customer/snippet/de.json
@@ -11698,6 +11711,7 @@ src/Administration/Resources/app/administration/src/core/application.spec.js
 src/Administration/Resources/app/administration/src/core/service/jsonapi-parser.service.ts
 src/Administration/Resources/app/administration/src/core/service/api/media-presigned-upload.api.service.js
 src/Administration/Resources/app/administration/src/core/service/api/index.ts
+src/Administration/Resources/app/administration/src/core/service/api/guest-customer-convert.service.spec.js
 src/Administration/Resources/app/administration/src/core/service/api/known-ips.api.service.js
 src/Administration/Resources/app/administration/src/core/service/api/update.api.service.spec.js
 src/Administration/Resources/app/administration/src/core/service/api/app-cms-blocks.service.js
@@ -11780,6 +11794,7 @@ src/Administration/Resources/app/administration/src/core/service/api/mcp-tool.ap
 src/Administration/Resources/app/administration/src/core/service/api/mail.api.service.spec.js
 src/Administration/Resources/app/administration/src/core/service/api/snippet.api.service.ts
 src/Administration/Resources/app/administration/src/core/service/api/sales-channel.api.service.js
+src/Administration/Resources/app/administration/src/core/service/api/guest-customer-convert.service.js
 src/Administration/Resources/app/administration/src/core/service/api/custom-snippet.api.service.ts
 src/Administration/Resources/app/administration/src/core/service/api/errors/InvalidActionButtonParameterError.ts
 src/Administration/Resources/app/administration/src/core/service/api/errors/InvalidActionButtonParameterError.spec.js
@@ -12182,6 +12197,7 @@ src/Elasticsearch/Framework/SystemUpdateListener.php
 src/Elasticsearch/Framework/Subscriber/InvalidateExpiredCacheSubscriber.php
 src/Elasticsearch/Framework/ElasticsearchDateHistogramAggregation.php
 src/Elasticsearch/DependencyInjection/Configuration.php
+src/Elasticsearch/DependencyInjection/services.php
 src/Elasticsearch/DependencyInjection/ElasticsearchMigrationCompilerPass.php
 src/Elasticsearch/DependencyInjection/ElasticsearchExtension.php
 src/Elasticsearch/Admin/AdminElasticsearchHelper.php
@@ -12216,7 +12232,6 @@ src/Elasticsearch/Resources/config/packages/elasticsearch.yaml
 src/Elasticsearch/Resources/config/packages/monolog.yaml
 src/Elasticsearch/Resources/config/packages/shopware.php
 src/Elasticsearch/Resources/config/packages/framework.yaml
-src/Elasticsearch/Resources/config/services.xml
 src/Elasticsearch/Resources/views/Collector/elasticsearch.html.twig
 src/Elasticsearch/Resources/views/Collector/icon.svg
 src/Elasticsearch/Product/ProductSearchBuilder.php
@@ -12915,6 +12930,7 @@ src/Storefront/Resources/app/storefront/src/scss/page/product-detail/_configurat
 src/Storefront/Resources/app/storefront/src/scss/page/product-detail/_tabs.scss
 src/Storefront/Resources/app/storefront/src/scss/page/product-detail/_product-detail.scss
 src/Storefront/Resources/app/storefront/src/scss/page/search/_search.scss
+src/Storefront/Resources/app/storefront/src/scss/page/checkout/_convert.scss
 src/Storefront/Resources/app/storefront/src/scss/page/checkout/_register.scss
 src/Storefront/Resources/app/storefront/src/scss/page/checkout/_confirm.scss
 src/Storefront/Resources/app/storefront/src/scss/page/checkout/_finish.scss
@@ -13470,6 +13486,7 @@ src/Storefront/Resources/views/storefront/page/account/customer-group-register/i
 src/Storefront/Resources/views/storefront/page/account/register/index.html.twig
 src/Storefront/Resources/views/storefront/page/account/sidebar.html.twig
 src/Storefront/Resources/views/storefront/page/account/guest-auth.html.twig
+src/Storefront/Resources/views/storefront/page/account/convert.html.twig
 src/Storefront/Resources/views/storefront/page/account/addressbook/address-manager.html.twig
 src/Storefront/Resources/views/storefront/page/account/addressbook/edit.html.twig
 src/Storefront/Resources/views/storefront/page/account/addressbook/index.html.twig
@@ -13939,6 +13956,7 @@ coding-guidelines/core/domain-exceptions.md
 coding-guidelines/core/6.5-new-php-language-features.md
 coding-guidelines/core/feature-flags.md
 coding-guidelines/core/agent-skills.md
+composer-dependency-analyser.php
 phpunit.xml.dist
 LICENSE
 UPGRADE-6.4.md
@@ -14663,6 +14681,7 @@ tests/integration/Core/Framework/DataAbstractionLayer/Field/RemoteAddressFieldTe
 tests/integration/Core/Framework/DataAbstractionLayer/Field/ListFieldTest.php
 tests/integration/Core/Framework/DataAbstractionLayer/Event/EntityWrittenEventSerializationTest.php
 tests/integration/Core/Framework/DataAbstractionLayer/Event/EntityLoadedEventFactoryTest.php
+tests/integration/Core/Framework/DataAbstractionLayer/ExcludeFieldsReaderTest.php
 tests/integration/Core/Framework/DataAbstractionLayer/EntityProtection/EntityProtectionValidatorTest.php
 tests/integration/Core/Framework/DataAbstractionLayer/EntityExtensionRegisteredTest.php
 tests/integration/Core/Framework/DataAbstractionLayer/Commands/RefreshIndexCommandTest.php
@@ -15404,6 +15423,7 @@ tests/integration/Core/Checkout/Document/Renderer/_snapshots/zugferd_credit_note
 tests/integration/Core/Checkout/Document/Renderer/_snapshots/zugferd_cancellation_invoice_document_default/snapshot.xml
 tests/integration/Core/Checkout/Document/Renderer/_snapshots/storno_renderer_default/snapshot.html
 tests/integration/Core/Checkout/Document/Renderer/_snapshots/credit_note_renderer_default/snapshot.html
+tests/integration/Core/Checkout/Document/Renderer/_snapshots/zugferd_credit_note_document_default_v6_8/snapshot.xml
 tests/integration/Core/Checkout/Document/Renderer/_snapshots/invoice_renderer_default/snapshot.html
 tests/integration/Core/Checkout/Document/Renderer/_snapshots/zugferd_invoice_document_default/snapshot.xml
 tests/integration/Core/Checkout/Document/Renderer/_snapshots/delivery_note_renderer_default/snapshot.html
@@ -15469,6 +15489,7 @@ tests/integration/Core/Checkout/Customer/DeleteUnusedGuestCustomerServiceTest.ph
 tests/integration/Core/Checkout/Customer/Repository/CustomerRepositoryTest.php
 tests/integration/Core/Checkout/Customer/Repository/CustomerTagTest.php
 tests/integration/Core/Checkout/Customer/Api/CustomerGroupRegistrationActionControllerTest.php
+tests/integration/Core/Checkout/Customer/Api/ConvertGuestControllerTest.php
 tests/integration/Core/Checkout/Customer/Subscriber/CustomerBeforeDeleteSubscriberTest.php
 tests/integration/Core/Checkout/Customer/Subscriber/CustomerSalutationSubscriberTest.php
 tests/integration/Core/Checkout/Customer/Subscriber/CustomerTokenSubscriberTest.php
@@ -15891,7 +15912,6 @@ tests/acceptance/tsconfig.json
 tests/acceptance/.eslintignore
 tests/acceptance/package-lock.json
 tests/acceptance/.prettierignore
-tests/acceptance/.prettierrc
 tests/acceptance/fixtures/AcceptanceTest.ts
 tests/acceptance/fixtures/HomeProducts.ts
 tests/acceptance/bin/createTask.js
@@ -16634,6 +16654,7 @@ tests/unit/Core/Framework/Notification/NotificationServiceTest.php
 tests/unit/Core/Framework/Notification/Api/NotificationControllerTest.php
 tests/unit/Core/Framework/Serializer/StructNormalizerTest.php
 tests/unit/Core/Framework/Event/EventData/EventDataCollectionTest.php
+tests/unit/Core/Framework/Event/EventData/FormDataObjectTypeTest.php
 tests/unit/Core/Framework/Event/EventData/ArrayTypeTest.php
 tests/unit/Core/Framework/Event/EventData/EntityCollectionTypeTest.php
 tests/unit/Core/Framework/Event/EventData/ScalarValueTypeTest.php
@@ -16889,8 +16910,8 @@ tests/unit/Core/Framework/Migration/AddColumnTraitTest.php
 tests/unit/Core/Framework/Migration/MigrationSourceTest.php
 tests/unit/Core/Framework/Migration/MigrationCollectionLoaderTest.php
 tests/unit/Core/Framework/Migration/Command/CreateMigrationCommandTest.php
-tests/unit/Core/Framework/Migration/Command/_fixtures/Migration1772030791Test.php.bak
 tests/unit/Core/Framework/Migration/Command/_fixtures/InvalidMigration.php
+tests/unit/Core/Framework/Migration/Command/_fixtures/Migration1772030791FooBar.php
 tests/unit/Core/Framework/Migration/Command/RefreshMigrationCommandTest.php
 tests/unit/Core/Framework/Migration/Command/MigrationCommandTest.php
 tests/unit/Core/Framework/Migration/MigrationStepTest.php
@@ -16999,6 +17020,7 @@ tests/unit/Core/Framework/DataAbstractionLayer/Search/Aggregation/Bucket/BucketA
 tests/unit/Core/Framework/DataAbstractionLayer/Search/SearchConfigLoaderTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/Search/Query/ScoreQueryTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/Search/Grouping/FieldGroupingTest.php
+tests/unit/Core/Framework/DataAbstractionLayer/Search/CriteriaExcludeFieldsTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/Search/CachedCompressedCriteriaDecoderTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/EntityCollectionTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/TechnicalNameExceptionHandlerTest.php
@@ -17100,6 +17122,7 @@ tests/unit/Core/Framework/DataAbstractionLayer/Dbal/Exception/InvalidSortingDire
 tests/unit/Core/Framework/DataAbstractionLayer/Dbal/EntityForeignKeyResolverTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/Dbal/Common/IteratorFactoryTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/Dbal/EntityDefinitionQueryHelperTest.php
+tests/unit/Core/Framework/DataAbstractionLayer/Dbal/EntityReaderTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/Dbal/SqlHelperTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/Dbal/EntityHydratorTest.php
 tests/unit/Core/Framework/DataAbstractionLayer/Dbal/JoinGroupBuilderTest.php
@@ -17620,9 +17643,13 @@ tests/unit/Core/Framework/Api/ApiDefinition/Generator/StoreApiGeneratorTest.php
 tests/unit/Core/Framework/Api/ApiDefinition/Generator/OpenApi3GeneratorTest.php
 tests/unit/Core/Framework/Api/ApiDefinition/Generator/CachedEntitySchemaGeneratorTest.php
 tests/unit/Core/Framework/Api/ApiDefinition/Generator/OpenApiFileLoaderTest.php
+tests/unit/Core/Framework/Api/Serializer/JsonApiEncodingResultTest.php
 tests/unit/Core/Framework/Api/Serializer/JsonSalesChannelApiEncoderTest.php
 tests/unit/Core/Framework/Api/Serializer/JsonApiEncoderTest.php
 tests/unit/Core/Framework/Api/Serializer/JsonApiDecoderTest.php
+tests/unit/Core/Framework/Api/Serializer/_fixtures/TestItemEntity.php
+tests/unit/Core/Framework/Api/Serializer/_fixtures/TestParentEntity.php
+tests/unit/Core/Framework/Api/Serializer/_fixtures/TestChildEntity.php
 tests/unit/Core/Framework/Api/Serializer/_fixtures/TestAttributeEntity.php
 tests/unit/Core/Framework/Api/Serializer/RecordTest.php
 tests/unit/Core/Framework/Api/Serializer/JsonEntityEncoderTest.php
@@ -18346,6 +18373,7 @@ tests/unit/Core/Checkout/Customer/Rule/LastNameRuleTest.php
 tests/unit/Core/Checkout/Customer/Rule/CustomerLoggedInRuleTest.php
 tests/unit/Core/Checkout/Customer/DeleteUnusedGuestCustomerServiceTest.php
 tests/unit/Core/Checkout/Customer/Api/CustomerGroupRegistrationActionControllerTest.php
+tests/unit/Core/Checkout/Customer/Api/ConvertGuestControllerTest.php
 tests/unit/Core/Checkout/Customer/Subscriber/CustomerBeforeDeleteSubscriberTest.php
 tests/unit/Core/Checkout/Customer/Subscriber/AddressHashSubscriberTest.php
 tests/unit/Core/Checkout/Customer/Subscriber/CustomerSalutationSubscriberTest.php
@@ -19066,6 +19094,7 @@ tests/unit/Storefront/Framework/Captcha/GoogleReCaptchaV2Test.php
 tests/unit/Storefront/Framework/Captcha/GoogleReCaptchaV3Test.php
 tests/unit/Storefront/Framework/Captcha/BasicCaptchaTest.php
 tests/unit/Storefront/Framework/Captcha/CaptchaRouteListenerTest.php
+tests/unit/Storefront/Framework/Captcha/HoneypotCaptchaTest.php
 tests/unit/Storefront/Framework/Captcha/CaptchaCookieCollectListenerTest.php
 tests/unit/Storefront/Framework/App/Template/IconTemplateLoaderTest.php
 tests/unit/Storefront/Framework/Seo/StorefrontCategoryUrlGeneratorTest.php
