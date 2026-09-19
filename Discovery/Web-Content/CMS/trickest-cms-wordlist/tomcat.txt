@@ -61,6 +61,7 @@ modules/jdbc-pool/src/test/java/org/apache/tomcat/jdbc/test/AlternateUsernameTes
 modules/jdbc-pool/src/test/java/org/apache/tomcat/jdbc/pool/ShouldForceReconnectTest.java
 modules/jdbc-pool/src/test/java/org/apache/tomcat/jdbc/pool/interceptor/InduceSlowQuery.java
 modules/jdbc-pool/src/test/java/org/apache/tomcat/jdbc/pool/interceptor/TestInterceptor.java
+modules/jdbc-pool/src/test/java/org/apache/tomcat/jdbc/pool/interceptor/TestStatementCache.java
 modules/jdbc-pool/src/test/java/org/apache/tomcat/jdbc/pool/interceptor/StatementCounterInterceptor.java
 modules/jdbc-pool/src/test/java/org/apache/tomcat/jdbc/pool/PoolPropertiesTest.java
 modules/jdbc-pool/src/test/java/org/apache/tomcat/jdbc/bugs/Bug54227.java
@@ -493,6 +494,7 @@ test/org/apache/tomcat/util/net/localhost-rsa-copy1.jks
 test/org/apache/tomcat/util/net/TesterSupport.java
 test/org/apache/tomcat/util/net/TestXxxEndpoint.java
 test/org/apache/tomcat/util/net/localhost-ec-key.pem
+test/org/apache/tomcat/util/net/empty-crl.pem
 test/org/apache/tomcat/util/net/key-password
 test/org/apache/tomcat/util/net/TestSocketBufferHandler.java
 test/org/apache/tomcat/util/net/ocsp-responder-rsa-cert.pem
@@ -508,11 +510,13 @@ test/org/apache/tomcat/util/net/jsse/key-encrypted-pkcs1-aes256.pem
 test/org/apache/tomcat/util/net/jsse/key-encrypted-pkcs8-hmacsha256-aes-256-cbc.pem
 test/org/apache/tomcat/util/net/jsse/TesterBug50640SslImpl.java
 test/org/apache/tomcat/util/net/jsse/key-encrypted-pkcs8-hmacsha256-aes-128-cbc.pem
+test/org/apache/tomcat/util/net/TestCrlSupport.java
 test/org/apache/tomcat/util/net/TestCustomSslTrustManager.java
 test/org/apache/tomcat/util/net/TestCustomSsl.java
 test/org/apache/tomcat/util/net/TesterKeystoreGenerator.java
 test/org/apache/tomcat/util/net/TestAlpnFallback.java
 test/org/apache/tomcat/util/net/ocsp-responder-rsa-key.pem
+test/org/apache/tomcat/util/net/populated-crl.pem
 test/org/apache/tomcat/util/net/localhost-rsa.jks
 test/org/apache/tomcat/util/net/localhost-ec.jks
 test/org/apache/tomcat/util/net/user1.jks
@@ -562,6 +566,7 @@ test/org/apache/tomcat/util/scan/TestAbstractInputStreamJar.java
 test/org/apache/tomcat/util/threads/TestLimitLatch.java
 test/org/apache/tomcat/util/TestIntrospectionUtils.java
 test/org/apache/tomcat/util/json/TestJSONFilter.java
+test/org/apache/tomcat/util/json/TestJSONParser.java
 test/org/apache/tomcat/util/res/TestStringManager.java
 test/org/apache/tomcat/integration/httpd/TestSSLValveWithProxy02.java
 test/org/apache/tomcat/integration/httpd/TestChunkedTransferEncodingWithProxy.java
@@ -801,6 +806,7 @@ test/org/apache/catalina/valves/TestAccessLogValve.java
 test/org/apache/catalina/valves/Benchmarks.java
 test/org/apache/catalina/valves/TestSemaphoreValve.java
 test/org/apache/catalina/valves/TestAccessLogValveDateFormatCache.java
+test/org/apache/catalina/valves/TestCrawlerSessionManagerValveIntegration.java
 test/org/apache/catalina/valves/TestExtendedAccessLogValveWrap.java
 test/org/apache/catalina/valves/TestLoadBalancerDrainingValve.java
 test/org/apache/catalina/valves/TestPatternTokenizer.java
@@ -884,6 +890,7 @@ test/org/apache/catalina/realm/TesterRolePrincipal.java
 test/org/apache/catalina/realm/TestJNDIRealmAttributeValueEscape.java
 test/org/apache/catalina/realm/TestMemoryRealm.java
 test/org/apache/catalina/realm/TesterServletSecurity01.java
+test/org/apache/catalina/realm/TestCombinedRealm.java
 test/org/apache/catalina/realm/TestJAASRealm.java
 test/org/apache/catalina/webresources/war/TestWarURLConnection.java
 test/org/apache/catalina/webresources/war/TestHandlerIntegration.java
@@ -930,6 +937,7 @@ test/org/apache/catalina/session/TestFileStore.java
 test/org/apache/catalina/session/TesterManager.java
 test/org/apache/catalina/session/TestPersistentManagerIntegration.java
 test/org/apache/catalina/session/TestStandardSession.java
+test/org/apache/catalina/storeconfig/TestXMLFormatPreserver.java
 test/org/apache/catalina/storeconfig/TestStoreConfig.java
 test/org/apache/catalina/storeconfig/TestStoreRegistry.java
 test/org/apache/catalina/nonblocking/TesterAjpNonBlockingClient.java
@@ -2890,22 +2898,15 @@ java/org/apache/tomcat/util/threads/TaskThreadFactory.java
 java/org/apache/tomcat/util/threads/LocalStrings_ja.properties
 java/org/apache/tomcat/util/XReflectionIntrospectionUtils.java
 java/org/apache/tomcat/util/Diagnostics.java
-java/org/apache/tomcat/util/json/LocalStrings_zh_CN.properties
-java/org/apache/tomcat/util/json/LocalStrings_fr.properties
 java/org/apache/tomcat/util/json/JSONParser.java
 java/org/apache/tomcat/util/json/Token.java
-java/org/apache/tomcat/util/json/LocalStrings.properties
-java/org/apache/tomcat/util/json/LocalStrings_ko.properties
 java/org/apache/tomcat/util/json/JSONParser.jjt
 java/org/apache/tomcat/util/json/JSONFilter.java
+java/org/apache/tomcat/util/json/SimpleCharStream.java
 java/org/apache/tomcat/util/json/JSONParserConstants.java
 java/org/apache/tomcat/util/json/JSONParserTokenManager.java
-java/org/apache/tomcat/util/json/LocalStrings_de.properties
-java/org/apache/tomcat/util/json/JavaCharStream.java
 java/org/apache/tomcat/util/json/TokenMgrError.java
 java/org/apache/tomcat/util/json/ParseException.java
-java/org/apache/tomcat/util/json/LocalStrings_ja.properties
-java/org/apache/tomcat/util/json/LocalStrings_ru.properties
 java/org/apache/tomcat/util/LocalStrings_ja.properties
 java/org/apache/tomcat/util/LocalStrings_ru.properties
 java/org/apache/tomcat/util/res/StringManager.java
@@ -3857,6 +3858,7 @@ java/org/apache/catalina/storeconfig/WatchedResourceSF.java
 java/org/apache/catalina/storeconfig/RealmSF.java
 java/org/apache/catalina/storeconfig/WrapperListenerSF.java
 java/org/apache/catalina/storeconfig/LocalStrings_pt_BR.properties
+java/org/apache/catalina/storeconfig/XMLFormatPreserver.java
 java/org/apache/catalina/storeconfig/StoreConfig.java
 java/org/apache/catalina/storeconfig/CertificateStoreAppender.java
 java/org/apache/catalina/storeconfig/GlobalNamingResourcesSF.java
