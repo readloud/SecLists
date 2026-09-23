@@ -63,6 +63,7 @@ test/phpunit/FunctionsLibTest.php
 test/phpunit/ProfidLibTest.php
 test/phpunit/SecurityLoginTest.php
 test/phpunit/TargetTest.php
+test/phpunit/OnNotSuccessfulTestTraitNever.php
 test/phpunit/ExportTest.php
 test/phpunit/EmailCleanerTest.php
 test/phpunit/GetUrlLibTest.php
@@ -138,6 +139,7 @@ test/phpunit/CommandeTest.php
 test/phpunit/ChargeSocialesTest.php
 test/phpunit/CategorieTest.php
 test/phpunit/CodingPhpTest.php
+test/phpunit/RestAPICronJobTest.php
 test/phpunit/PaymentSalaryTest.php
 test/phpunit/FactureTestRounding.php
 test/phpunit/XCalLibTest.php
@@ -156,9 +158,6 @@ test/phpunit/CronjobTest.php
 test/phpunit/JsonLibTest.php
 test/phpunit/ModuleBuilderShowOnComboboxTest.php
 test/phpunit/BankAccountTest.php
-test/phpunit/functional/TakePosFunctionalTest.php
-test/phpunit/functional/README.md
-test/phpunit/functional/InstallTest.php
 test/phpunit/EntrepotTest.php
 test/phpunit/testvirus.txt
 test/phpunit/FunctionsLibDragDropTest.php
@@ -182,6 +181,7 @@ test/phpunit/PropalCommandeFactureWorkflowTest.php
 test/phpunit/ImagesLibTest.php
 test/phpunit/PgsqlTest.php
 test/phpunit/PdfDocTest.php
+test/phpunit/OnNotSuccessfulTestTrait.php
 test/phpunit/AllTests.php
 test/awbot/README
 test/awbot/output/README
@@ -313,6 +313,7 @@ htdocs/cron/info.php
 htdocs/cron/admin/cron.php
 htdocs/cron/list.php
 htdocs/cron/card.php
+htdocs/cron/class/api_cronjobs.class.php
 htdocs/cron/class/cronjob.class.php
 htdocs/main.inc.php
 htdocs/debugbar/js/widgets.js
@@ -1826,7 +1827,6 @@ htdocs/langs/en_US/banks.lang
 htdocs/langs/en_US/stocks.lang
 htdocs/langs/en_US/multicurrency.lang
 htdocs/langs/en_US/margins.lang
-htdocs/langs/en_US/ai.lang
 htdocs/langs/en_US/datapolicy.lang
 htdocs/langs/en_US/cron.lang
 htdocs/langs/en_US/users.lang
@@ -13462,7 +13462,6 @@ dev/tools/test/namespacemig/aaa.class.php
 dev/tools/test/namespacemig/bbb.php
 dev/tools/test/testtcpdf.php
 dev/tools/test/testutf.php
-dev/tools/test/facturex-pdfextractxml.py
 dev/tools/test/testperf.php
 dev/tools/phpstan/phpstan_v1_apstats.neon
 dev/tools/phpstan/allow_phpstan_in_precommit.sh
